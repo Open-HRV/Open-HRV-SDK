@@ -4,7 +4,7 @@ SDK for running Open HRV pipeline API. More info available here: https://open-hr
 Run easily HRV calculation with an online API. One command to calculate up to 70 HRV indeces. Filtering included. Works on ECG, PPG and RRs data (raw data). You can extract this from your wearable device and use it easily. Please contatct me if you have any questions
 
 
-# Example of usage:
+# Example of usage single:
 `python3 ./run.py -f ./example-ppg.csv -s 64 -d PPG`
 
 `Request sent successfully. Response status code: 200`
@@ -12,3 +12,10 @@ Run easily HRV calculation with an online API. One command to calculate up to 70
 ```
 Response content your HRV: b'{"example-ppg.csv":{"HRV_MeanNN":656.178652968,"HRV_SDNN":180.1823242029,"HRV_SDANN1":73.0594521936,"HRV_SDNNI1":168.8821842367,"HRV_SDANN2":null,"HRV_SDNNI2":null,"HRV_SDANN5":null,"HRV_SDNNI5":null,"HRV_RMSSD":156.6231956244,"HRV_SDSD":156.8025062997,"HRV_CVNN":0.2745933952,"HRV_CVSD":0.2386898673,"HRV_MedianNN":593.75,"HRV_MadNN":127.4109375,"HRV_MCVNN":0.2145868421,"HRV_IQRNN":230.46875,"HRV_Prc20NN":515.625,"HRV_Prc80NN":812.5,"HRV_pNN50":43.6073059361,"HRV_pNN20":56.8493150685,"HRV_MinNN":390.625,"HRV_MaxNN":1421.875,"HRV_HTI":9.5217391304,"HRV_TINN":140.625,"HRV_ULF":null,"HRV_VLF":0.0088463246,"HRV_LF":0.0260194444,"HRV_HF":0.027656986,"HRV_VHF":0.0024426922,"HRV_LFHF":0.9407910294,"HRV_LFn":0.4005120486,"HRV_HFn":0.4257183966,"HRV_LnHF":-3.5878769239,"HRV_SD1":110.8761155115,"HRV_SD2":229.7182872413,"HRV_SD1SD2":0.4826612493,"HRV_S":80017.2173621069,"HRV_CSI":2.0718464584,"HRV_CVI":5.6101535545,"HRV_CSI_Modified":1903.7640793818,"HRV_PIP":0.7146118721,"HRV_IALS":0.7233333333,"HRV_PSS":0.8986175115,"HRV_PAS":0.3260869565,"HRV_GI":50.1309390198,"HRV_SI":50.0348187499,"HRV_AI":50.2693240302,"HRV_PI":50.3333333333,"HRV_C1d":0.5278644469,"HRV_C1a":0.4721355531,"HRV_SD1d":80.5563467839,"HRV_SD1a":76.1854275905,"HRV_C2d":0.494011967,"HRV_C2a":0.505988033,"HRV_SD2d":161.4597606229,"HRV_SD2a":163.4051320879,"HRV_Cd":0.5004082343,"HRV_Ca":0.4995917657,"HRV_SDNNd":127.5903195928,"HRV_SDNNa":127.4861886045,"HRV_DFA_alpha1":1.0574809869,"HRV_MFDFA_alpha1_Width":1.2246957015,"HRV_MFDFA_alpha1_Peak":1.5515143009,"HRV_MFDFA_alpha1_Mean":1.3365925394,"HRV_MFDFA_alpha1_Max":0.867253373,"HRV_MFDFA_alpha1_Delta":0.647927785,"HRV_MFDFA_alpha1_Asymmetry":-0.6754899288,"HRV_MFDFA_alpha1_Fluctuation":0.0034665083,"HRV_MFDFA_alpha1_Increment":0.1921232393,"HRV_DFA_alpha2":0.719704089,"HRV_MFDFA_alpha2_Width":0.8443627937,"HRV_MFDFA_alpha2_Peak":0.8917397692,"HRV_MFDFA_alpha2_Mean":1.0094363032,"HRV_MFDFA_alpha2_Max":0.4600495964,"HRV_MFDFA_alpha2_Delta":-0.2295807886,"HRV_MFDFA_alpha2_Asymmetry":-0.3606090475,"HRV_MFDFA_alpha2_Fluctuation":0.0006411526,"HRV_MFDFA_alpha2_Increment":0.0656222245,"HRV_ApEn":1.0083295601,"HRV_SampEn":0.836082173,"HRV_ShanEn":5.0416643487,"HRV_FuzzyEn":0.9960690802,"HRV_MSEn":1.2449754405,"HRV_CMSEn":1.3337186036,"HRV_RCMSEn":1.5528316557,"HRV_CD":1.3317588804,"HRV_HFD":1.7861059451,"HRV_KFD":2.7915718048,"HRV_LZC":0.7212153748}}'
 ```
+# Example of usage devided to epochs:
+Calculating HRV by our algorithm works the best with segment length from 1 up to 10 minutes. Provide parameters to dewvide it accordingly:
+
+`python3 ./run.py -f ./example-ppg.csv -s 64 -d PPG -sg -l 120 -o 0`
+
+l - segment length in seconds
+o - overlap from 0 to 1
